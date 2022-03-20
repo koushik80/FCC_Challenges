@@ -1,6 +1,6 @@
 {
-	"author": "Koushik Dey",
 	"name": "fcc-learn-npm-package-json",
+	"author": "Koushik Dey",
 	"dependencies": {
 		"express": "^4.17.1"
 	},
