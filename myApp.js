@@ -2,20 +2,44 @@ var express = require('express');
 var app = express();
 require('dotenv').config()
 
-// console.log("Hello World");
+// challenge
+console.log("Hello World");
 
+// challenge
 app.use(function middleware(req, res, next) {
   var string = req.method + " " + req.path + " - " + req.ip;
   console.log(string);
   next();
 });
 
+// challenge
+const middleware = (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+};
+
+app.get("/now", middleware, (req, res) => {
+  res.send({
+    time: req.time
+  });
+});
+
+// challenge
+app.get("/:word/echo", (req, res) => {
+  var { word } = req.params;
+  res.json({
+    echo: word
+  });
+});
+
+// challenge
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
 app.use("/public", express.static(__dirname + "/public"));
 
+// challenge
 app.get("/json", (req, res) => {
 
   var response = "Hello json"
