@@ -9,7 +9,9 @@
 	],
 	"license": "MIT",
 	"dependencies": {
+		"dotenv": "^16.0.0",
 		"express": "^4.17.1",
+		"fcc-express-bground": "https://github.com/freeCodeCamp/fcc-express-bground-pkg.git",
 		"moment": "^2.29.1"
 	},
 	"main": "server.js",
