@@ -25,6 +25,18 @@ app.get("/now", middleware, (req, res) => {
 });
 
 // challenge
+app.get("/name", (req, res) => {
+  var firstName = req.query.first;
+  var lastName = req.query.last;
+  var { first: firstName, last: lastName } = req.query;
+  res.json({
+    name: `${firstName} ${lastName}`
+      });
+
+});
+
+
+// challenge
 app.get("/:word/echo", (req, res) => {
   var { word } = req.params;
   res.json({
