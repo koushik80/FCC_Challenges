@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require("body-parser");
 require('dotenv').config()
 
 // challenge
@@ -11,6 +12,10 @@ app.use(function middleware(req, res, next) {
   console.log(string);
   next();
 });
+
+// challenge
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // challenge
 const middleware = (req, res, next) => {
@@ -28,7 +33,7 @@ app.get("/now", middleware, (req, res) => {
 app.get("/name", (req, res) => {
   var firstName = req.query.first;
   var lastName = req.query.last;
-  var { first: firstName, last: lastName } = req.query;
+  // var { first: firstName, last: lastName } = req.query;
   res.json({
     name: `${firstName} ${lastName}`
       });
