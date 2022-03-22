@@ -61,12 +61,19 @@ app.get("/json", (req, res) => {
 
   var response = "Hello json"
   if (process.env.MESSAGE_STYLE == "uppercase") {
-      response = response.toUpperCase();
+    response = response.toUpperCase();
   }
   res.json({
     message: response
   });
-})
+});
+
+// challenge
+app.post("/name", (req, res) => {
+  // Handle the data in the request
+  const string = req.body.first + " " + req.body.last;
+  res.json({ name: string });
+});
 
 
 

@@ -8,6 +8,8 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var bGround = require('fcc-express-bground');
+var myApp = require('./myApp');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -45,14 +47,15 @@ app.use(function(req, res, next){
 });
 
 // Error Middleware
-app.use(function(err, req, res, next) {
-  if(err) {
+app.use(function (err, req, res, next) {
+  if (err) {
     res.status(err.status || 500)
       .type('txt')
       .send(err.message || 'SERVER ERROR');
-  }  
-})
+  }
+});
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');
 });
+
